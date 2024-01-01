@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/pages/my_home.dart';
 import 'package:flutter_playground/pages/welcome.dart';
+import 'package:logger/logger.dart';
+
+var logger = Logger(
+  printer: PrettyPrinter(),
+);
+
+var loggerN = Logger(
+  printer: PrettyPrinter(methodCount: 0),
+);
 
 void main() {
   runApp(const MyApp());
@@ -37,8 +46,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       // routes table
       routes: {
-        '/': (context) => MyHomePage(title: 'Flutter Demo Home Page'),
-        'welcome': (context) => Welcome()
+        '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
+        'welcome': (context) => const Welcome()
       },
     );
   }

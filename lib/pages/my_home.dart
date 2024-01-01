@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/pages/welcome.dart';
+import 'package:flutter_playground/main.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -78,13 +78,11 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             TextButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const Welcome(),
-                ),
-              ),
-              child: const Text('你到达了门口, 缓缓推开门'),
+              onPressed: () {
+                loggerN.i('next page is welcom');
+                Navigator.pushNamed(context, 'welcome');
+              },
+              child: const Text('你到达了门口, 缓缓推开门...'),
             )
           ],
         ),
