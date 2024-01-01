@@ -6,6 +6,9 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 可以改成 widget 传参
+    // 在定义 MaterialApp 中添加 routes 配置
+    // return TipRoute(text: ModalRoute.of(context)!.settings.arguments);
     MissMaid args = ModalRoute.of(context)?.settings.arguments as MissMaid;
     return Scaffold(
       appBar: AppBar(title: const Text('温馨的家')),
