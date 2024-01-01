@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/pages/login.dart';
 import 'package:flutter_playground/pages/my_home.dart';
 import 'package:flutter_playground/pages/welcome.dart';
 import 'package:logger/logger.dart';
@@ -47,7 +48,8 @@ class MyApp extends StatelessWidget {
         // routes table
         routes: {
           '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
-          'welcome': (context) => const Welcome()
+          'welcome': (context) => const Welcome(),
+          'login': (context) => const Login()
         },
         // 只会对命名路由生效
         onGenerateRoute: (RouteSettings settings) {

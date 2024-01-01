@@ -101,6 +101,12 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text("撤退"),
               onPressed: () {},
             ),
+            ElevatedButton(
+              child: const Text("login"),
+              onPressed: () {
+                Navigator.pushNamed(context, 'login');
+              },
+            ),
           ],
         ),
       ),
