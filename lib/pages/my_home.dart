@@ -21,6 +21,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  int _selectedIndex = 1;
 
   void _incrementCounter() {
     setState(() {
@@ -50,73 +51,134 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-              style: TextStyle(
-                fontFamily: 'Goldman',
-                fontWeight: FontWeight.bold,
-              ),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(48.0), // 底部栏的高度
+          child: Container(
+            color: Colors.blue[200],
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                OutlinedButton(
+                  onPressed: () {
+                    // 处理底部按钮1点击事件
+                  },
+                  child: Text('Button 1'),
+                ),
+                OutlinedButton(
+                  onPressed: () {
+                    // 处理底部按钮2点击事件
+                  },
+                  child: Text('Button 2'),
+                ),
+                // 可以添加更多的底部按钮
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            Image.asset(
-              'assets/avatar/wechat_avatar.jpg',
-              height: 40,
-              width: 40,
-            ),
-            TextButton(
-              onPressed: () {
-                loggerN.i('next page is welcom');
-                Navigator.pushNamed(
-                  context,
-                  'welcome',
-                  arguments: MissMaid(age: '??', name: 'nayo'),
-                );
-              },
-              child: const Text('你到达了门口, 缓缓推开门...'),
-            ),
-            ElevatedButton(
-              child: const Text("撤退"),
-              onPressed: () {},
-            ),
-            ElevatedButton(
-              child: const Text("login"),
-              onPressed: () {
-                Navigator.pushNamed(context, 'login');
-              },
-            ),
-          ],
+          ),
         ),
+      ),
+
+      body: ListView(
+        children: [
+          Center(
+            // Center is a layout widget. It takes a single child and positions it
+            // in the middle of the parent.
+            child: Column(
+              // Column is also a layout widget. It takes a list of children and
+              // arranges them vertically. By default, it sizes itself to fit its
+              // children horizontally, and tries to be as tall as its parent.
+              //
+              // Column has various properties to control how it sizes itself and
+              // how it positions its children. Here we use mainAxisAlignment to
+              // center the children vertically; the main axis here is the vertical
+              // axis because Columns are vertical (the cross axis would be
+              // horizontal).
+              //
+              // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
+              // action in the IDE, or press "p" in the console), to see the
+              // wireframe for each widget.
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'You have pushed the button this many times:',
+                  style: TextStyle(
+                    fontFamily: 'Goldman',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  '$_counter',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                Image.asset(
+                  'assets/avatar/wechat_avatar.jpg',
+                  height: 40,
+                  width: 40,
+                ),
+                TextButton(
+                  onPressed: () {
+                    loggerN.i('next page is welcom');
+                    Navigator.pushNamed(
+                      context,
+                      'welcome',
+                      arguments: MissMaid(age: '??', name: 'nayo'),
+                    );
+                  },
+                  child: const Text('你到达了门口, 缓缓推开门...'),
+                ),
+                ElevatedButton(
+                  child: const Text("撤退"),
+                  onPressed: () {},
+                ),
+                ElevatedButton(
+                  child: const Text("login"),
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'login');
+                  },
+                ),
+                ElevatedButton(
+                  child: const Text("focus test"),
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'testFocus');
+                  },
+                ),
+                ElevatedButton(
+                  child: const Text("nest test"),
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'nestView');
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        // 底部导航
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.business), label: 'Business'),
+          BottomNavigationBarItem(icon: Icon(Icons.school), label: 'School'),
+        ],
+        currentIndex: _selectedIndex,
+        fixedColor: Colors.blue,
+        onTap: _onItemTapped,
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  void _onAdd() {}
 }
 
 class MissMaid {
