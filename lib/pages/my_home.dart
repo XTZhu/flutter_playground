@@ -147,6 +147,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.pushNamed(context, 'nestView');
                   },
                 ),
+                ElevatedButton(
+                  child: const Text("test_sliver_app_bar"),
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'test_sliver_app_bar');
+                  },
+                ),
               ],
             ),
           ),

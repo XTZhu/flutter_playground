@@ -9,128 +9,75 @@ class MyNestedScrollView extends StatelessWidget {
     return Scaffold(
       body: DefaultTabController(
           length: 2,
-          child: TabBarView(
-            children: [
-              CustomScrollView(slivers: [
-                SliverAppBar(
-                  expandedHeight: 200.0,
-                  floating: false,
-                  pinned: true,
-                  flexibleSpace: FlexibleSpaceBar(
-                    title: const Text('Nested Scroll View'),
-                    background: Image.network(
-                      'https://scontent.cdninstagram.com/v/t39.30808-6/415865207_18416149624005496_5067081940893110165_n.jpg?stp=dst-jpg_e15&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE0NDAuc2RyIn0&_nc_ht=scontent.cdninstagram.com&_nc_cat=1&_nc_ohc=vLFnGFnWWD8AX9jxqEj&edm=APs17CUAAAAA&ccb=7-5&ig_cache_key=MzI3MDQ3MjE5ODgyMzY4NzMxOQ%3D%3D.2-ccb7-5&oh=00_AfAwkzyhSj2Gii-pR1uWoSCrOKturQaUo5GEqNb8mDbRmQ&oe=6597F9F4&_nc_sid=10d13b',
-                      fit: BoxFit.cover,
-                    ),
+          child: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                expandedHeight: 200.0,
+                floating: false,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  title: const Text('Nested Scroll View'),
+                  background: Image.network(
+                    'https://scontent.cdninstagram.com/v/t39.30808-6/415865207_18416149624005496_5067081940893110165_n.jpg?stp=dst-jpg_e15&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE0NDAuc2RyIn0&_nc_ht=scontent.cdninstagram.com&_nc_cat=1&_nc_ohc=vLFnGFnWWD8AX9jxqEj&edm=APs17CUAAAAA&ccb=7-5&ig_cache_key=MzI3MDQ3MjE5ODgyMzY4NzMxOQ%3D%3D.2-ccb7-5&oh=00_AfAwkzyhSj2Gii-pR1uWoSCrOKturQaUo5GEqNb8mDbRmQ&oe=6597F9F4&_nc_sid=10d13b',
+                    fit: BoxFit.cover,
                   ),
                 ),
-                SliverPersistentHeader(
-                  pinned: true,
-                  delegate: _SliverAppBarDelegate(
-                    const TabBar(
-                      tabs: [
-                        Tab(text: 'Tab 1'),
-                        Tab(text: 'Tab 2'),
-                      ],
-                    ),
+              ),
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: _SliverAppBarDelegate(
+                  const TabBar(
+                    tabs: [
+                      Tab(text: 'Tab 1'),
+                      Tab(text: 'Tab 2'),
+                    ],
                   ),
                 ),
+              ),
 
-                SliverPersistentHeader(
-                  pinned: true,
-                  delegate: SliverHeaderDelegate(
-                    //有最大和最小高度
-                    maxHeight: 180,
-                    minHeight: 50,
-                    child: YourHorizontalScrollWidget(),
-                  ),
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: SliverHeaderDelegate(
+                  //有最大和最小高度
+                  maxHeight: 180,
+                  minHeight: 50,
+                  child: YourHorizontalScrollWidget(),
                 ),
-                SliverFixedExtentList.builder(
-                  itemExtent: 30,
+              ),
+              SliverFixedExtentList.builder(
+                itemExtent: 30,
+                itemCount: 50,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text('Item $index'),
+                  );
+                },
+              ),
+              SliverFillRemaining(
+                  child: TabBarView(children: [
+                ListView.builder(
                   itemCount: 50,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text('Item $index'),
-                    );
+                  itemBuilder: (BuildContext context, int index) {
+                    return Text('Item 1050 ti$index');
                   },
                 ),
-
-                // Rest of your content for the second tab
-                // GridView(
-                //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                //     crossAxisCount: 3,
-                //     childAspectRatio: 1.0,
-                //   ),
-                //   children: const <Widget>[
-                //     Icon(Icons.ac_unit),
-                //     Icon(Icons.airport_shuttle),
-                //     Icon(Icons.all_inclusive),
-                //     Icon(Icons.beach_access),
-                //     Icon(Icons.cake),
-                //     Icon(Icons.free_breakfast)
-                //   ],
-                // ),
-              ]),
-              CustomScrollView(slivers: [
-                SliverAppBar(
-                  expandedHeight: 200.0,
-                  floating: false,
-                  pinned: true,
-                  flexibleSpace: FlexibleSpaceBar(
-                    title: const Text('Nested Scroll View'),
-                    background: Image.network(
-                      'https://scontent.cdninstagram.com/v/t39.30808-6/415865207_18416149624005496_5067081940893110165_n.jpg?stp=dst-jpg_e15&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE0NDAuc2RyIn0&_nc_ht=scontent.cdninstagram.com&_nc_cat=1&_nc_ohc=vLFnGFnWWD8AX9jxqEj&edm=APs17CUAAAAA&ccb=7-5&ig_cache_key=MzI3MDQ3MjE5ODgyMzY4NzMxOQ%3D%3D.2-ccb7-5&oh=00_AfAwkzyhSj2Gii-pR1uWoSCrOKturQaUo5GEqNb8mDbRmQ&oe=6597F9F4&_nc_sid=10d13b',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                SliverPersistentHeader(
-                  pinned: true,
-                  delegate: _SliverAppBarDelegate(
-                    const TabBar(
-                      tabs: [
-                        Tab(text: 'Tab 1'),
-                        Tab(text: 'Tab 2'),
-                      ],
-                    ),
-                  ),
-                ),
-
-                SliverPersistentHeader(
-                  pinned: true,
-                  delegate: SliverHeaderDelegate(
-                    //有最大和最小高度
-                    maxHeight: 180,
-                    minHeight: 50,
-                    child: YourHorizontalScrollWidget(),
-                  ),
-                ),
-                SliverFixedExtentList.builder(
-                  itemExtent: 30,
-                  itemCount: 50,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text('Item $index'),
-                    );
-                  },
-                ),
-
-                // Rest of your content for the second tab
-                // GridView(
-                //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                //     crossAxisCount: 3,
-                //     childAspectRatio: 1.0,
-                //   ),
-                //   children: const <Widget>[
-                //     Icon(Icons.ac_unit),
-                //     Icon(Icons.airport_shuttle),
-                //     Icon(Icons.all_inclusive),
-                //     Icon(Icons.beach_access),
-                //     Icon(Icons.cake),
-                //     Icon(Icons.free_breakfast)
-                //   ],
-                // ),
-              ]),
+                Text('456')
+              ])),
+              // Rest of your content for the second tab
+              // GridView(
+              //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              //     crossAxisCount: 3,
+              //     childAspectRatio: 1.0,
+              //   ),
+              //   children: const <Widget>[
+              //     Icon(Icons.ac_unit),
+              //     Icon(Icons.airport_shuttle),
+              //     Icon(Icons.all_inclusive),
+              //     Icon(Icons.beach_access),
+              //     Icon(Icons.cake),
+              //     Icon(Icons.free_breakfast)
+              //   ],
+              // ),
             ],
           )),
     );
