@@ -33,10 +33,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink.shade100),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      // routes: {
-      //   'welcom': (context) => const Welcome()
-      // },
+      // as name sayd
+      initialRoute: '/',
+      // routes table
+      routes: {
+        '/': (context) => MyHomePage(title: 'Flutter Demo Home Page'),
+        'welcome': (context) => Welcome()
+      },
     );
   }
 }
