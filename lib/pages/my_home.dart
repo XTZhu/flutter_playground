@@ -72,10 +72,19 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text(
               'You have pushed the button this many times:',
+              style: TextStyle(
+                fontFamily: 'Goldman',
+                fontWeight: FontWeight.bold,
+              ),
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            Image.asset(
+              'assets/avatar/wechat_avatar.jpg',
+              height: 40,
+              width: 40,
             ),
             TextButton(
               onPressed: () {
@@ -87,7 +96,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: const Text('你到达了门口, 缓缓推开门...'),
-            )
+            ),
+            ElevatedButton(
+              child: const Text("撤退"),
+              onPressed: () {},
+            ),
           ],
         ),
       ),
