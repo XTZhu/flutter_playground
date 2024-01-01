@@ -80,7 +80,11 @@ class _MyHomePageState extends State<MyHomePage> {
             TextButton(
               onPressed: () {
                 loggerN.i('next page is welcom');
-                Navigator.pushNamed(context, 'welcome');
+                Navigator.pushNamed(
+                  context,
+                  'welcome',
+                  arguments: MissMaid(age: '??', name: 'nayo'),
+                );
               },
               child: const Text('你到达了门口, 缓缓推开门...'),
             )
@@ -94,4 +98,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+class MissMaid {
+  String name;
+  String age;
+
+  MissMaid({required this.name, required this.age});
 }
